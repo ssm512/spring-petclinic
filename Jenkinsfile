@@ -13,15 +13,15 @@ pipeline {
         git url: 'https://github.com/ssm512/spring-petclinic.git',
           branch: 'efficient-webjars'
       }
-    }
-  
-    post {
-      success {
-        echo 'Git Clone success!!'
-      }
-      failure {
-        echo 'Git Clone faile'
-      }
+    
+      post {
+        success {
+          echo 'Git Clone success!!'
+        }
+        failure {
+          echo 'Git Clone faile'
+         }
+       }
     }
 
     stage('Maven Build') {
@@ -29,11 +29,10 @@ pipeline {
         echo 'Maven Build'
         sh 'mvn -Dmaven.test.failure.ignore=true clean package'
       }
-    }
-
-    post {
-      success {
-        junit 'target/surefire-reports/**/*.xml'
+      post {
+        success {
+          junit 'target/surefire-reports/**/*.xml'
+        }
       }
     }
     
