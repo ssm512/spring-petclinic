@@ -69,7 +69,7 @@ pipeline {
     stage('Clean Up Docker Images on Jenkins Server') {
       steps {
         echo 'Cleaning up unused Docker images on Jenkins server'
-        sh "docker images prune -f --all --filter \"until=1h\""
+        sh "docker images prune -f --all --fillter \"until=1h\""
       }
     }
     
