@@ -72,6 +72,17 @@ pipeline {
         sh "docker images prune -a -f"
       }
     }
+    stage('Upload to S3') {
+      steps {
+        echo 'Upload to S3'
+        dir("$(env.WORKSPACE)") {
+          sh 'zip -r deploy.zip ./deploy appspec.yaml'
+          withAWS(region:"${REGION}", credentials:"${AWS_CREDENTIAL_NAME}") {
+            s3Upload(file:"deploy.zip", bucket:"std05-codedeploy-bucket")
+          }
+        }
+      }
+    }
     
     
   }
