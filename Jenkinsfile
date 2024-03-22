@@ -69,7 +69,7 @@ pipeline {
     stage('Clean Up Docker Images on Jenkins Server') {
       steps {
         echo 'Cleaning up unused Docker images on Jenkins server'
-        sh "docker images prune -a -f"
+        sh "docker image prune -a -f"
       }
     }
     stage('Upload to S3') {
