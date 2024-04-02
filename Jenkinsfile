@@ -89,9 +89,9 @@ pipeline {
                echo "create Codedeploy group"   
                 sh '''
                     aws deploy create-deployment-group \
-                    --application-name std05-code-deploy \
+                    --application-name std05-codedeploy \
                     --auto-scaling-groups std05-asg-target \
-                    --deployment-group-name std05-code-deploy-${BUILD_NUMBER} \
+                    --deployment-group-name std05-codedeploy-${BUILD_NUMBER} \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --service-role-arn arn:aws:iam::257307634175:role/std05-codedeploy-service-role
                     '''
