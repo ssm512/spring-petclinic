@@ -97,9 +97,9 @@ pipeline {
                     '''
                 echo "Codedeploy Workload"   
                 sh '''
-                    aws deploy create-deployment --application-name std05-code-deploy \
+                    aws deploy create-deployment --application-name std05-codedeploy \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
-                    --deployment-group-name std05-code-deploy-${BUILD_NUMBER} \
+                    --deployment-group-name std05-codedeploy-${BUILD_NUMBER} \
                     --s3-location bucket=std05-codedeploy-bucket,bundleType=zip,key=deploy.zip
                     '''
                     sleep(10) // sleep 10s
